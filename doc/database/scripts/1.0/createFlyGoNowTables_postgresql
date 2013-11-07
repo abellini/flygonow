@@ -1,0 +1,66 @@
+﻿--Admin
+
+create or replace function fn_Admin()
+returns trigger as $fn_Admin$
+ declare
+ begin
+  select nextVal("seq_Admin") into NEW.id from dual;
+  return NEW;
+ end;
+$fn_Admin$ language plpgsql;
+
+create trigger tr_Admin before insert
+on Admin for each row execute procedure fn_Admin();
+
+--Categoria
+create or replace function fn_Categoria()
+returns trigger as $fn_Categoria$
+ declare
+ begin
+  select nextVal("seq_Categoria") into NEW.id from dual;
+  return NEW;
+ end;
+$fn_Categoria$ language plpgsql;
+
+create trigger tr_Categoria before insert
+on categorias for each row execute procedure fn_Categoria();
+
+--Pedidos
+create or replace function fn_Pedido()
+returns trigger as $fn_Pedido$
+ declare
+ begin
+  select nextVal("seq_Pedido") into NEW.id from dual;
+  return NEW;
+ end;
+$fn_Pedido$ language plpgsql;
+
+create trigger tr_Pedido before insert
+on pedidos for each row execute procedure fn_Pedido();
+
+
+--Produto
+create or replace function fn_Produto()
+returns trigger as $fn_Produto$
+ declare
+ begin
+  select nextVal("seq_Produto") into NEW.id from dual;
+  return NEW;
+ end;
+$fn_Produto$ language plpgsql;
+
+create trigger tr_Produto before insert
+on produtos for each row execute procedure fn_Produto();
+
+--Usuarios
+create or replace function fn_Usuario()
+returns trigger as $fn_Usuario$
+ declare
+ begin
+  select nextVal("seq_Usuario") into NEW.id from dual;
+  return NEW;
+ end;
+$fn_Usuario$ language plpgsql;
+
+create trigger tr_Usuario before insert
+on usuarios for each row execute procedure fn_Usuario();
