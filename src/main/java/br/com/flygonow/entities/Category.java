@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Categorias")
-public class Categoria implements Serializable {
+public class Category implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -36,9 +36,9 @@ public class Categoria implements Serializable {
 	private String descricao;
 	
 	@OneToMany(mappedBy="cat", fetch = LAZY, cascade = ALL)    
-	private Set<Produto> produtos;
+	private Set<Product> produtos;
 
-	public Categoria() {
+	public Category() {
 		super();
 	}
 
@@ -66,11 +66,11 @@ public class Categoria implements Serializable {
 		this.imagem = imagem;
 	}
 	
-	public Set<Produto> getProdutos() {
+	public Set<Product> getProdutos() {
 		return this.produtos;
 	}
 
-	public void setProdutos(Set<Produto> produtos) {
+	public void setProdutos(Set<Product> produtos) {
 		this.produtos = produtos;
 	}
 

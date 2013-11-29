@@ -10,8 +10,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Moeda")
-public class Moeda implements Serializable{
+@Table(name="Coin")
+public class Coin implements Serializable{
 	
 	private static final long serialVersionUID = 1;
 	

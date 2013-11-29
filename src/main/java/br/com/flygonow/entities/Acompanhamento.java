@@ -34,7 +34,7 @@ public class Acompanhamento implements Serializable {
 	private Double preco;
 	
 	@ManyToOne
-	private Produto produto;
+	private Product produto;
 
 	public Long getId() {
 		return id;

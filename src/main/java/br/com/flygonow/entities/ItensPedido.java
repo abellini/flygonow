@@ -24,11 +24,11 @@ public class ItensPedido implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="ped_id", referencedColumnName = "id", insertable=false, updatable=false)
-	private Pedido pedido;
+	private Order pedido;
 	
 	@ManyToOne
 	@JoinColumn(name="prod_id", referencedColumnName = "id", insertable=false, updatable=false)
-	private Produto produto;
+	private Product produto;
 	
 	@Transient
 	private Double subTotal;
@@ -42,11 +42,11 @@ public class ItensPedido implements Serializable {
 		this.preco = preco;
 	}
 	
-	public Pedido getPedido() {
+	public Order getPedido() {
 		return pedido;
 	}
 
-	public void setPedido(Pedido pedido) {
+	public void setPedido(Order pedido) {
 		this.pedido = pedido;
 	}
 
@@ -76,11 +76,11 @@ public class ItensPedido implements Serializable {
 		this.id = id;
 	}
 
-	public Produto getProduto() {
+	public Product getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(Product produto) {
 		this.produto = produto;
 	}
 

@@ -24,14 +24,14 @@
     
     <tx:annotation-driven />
     
-    <bean id="categoriaDao" class="br.com.flygonow.dao.impl.CategoriaDaoImp" />
-	<bean id="produtoDao" class="br.com.flygonow.dao.impl.ProdutoDaoImp" />
-    <bean id="pedidoDao" class="br.com.flygonow.dao.impl.PedidoDaoImp" />
+    <bean id="categoriaDao" class="br.com.flygonow.dao.impl.CategoryDaoImp" />
+	<bean id="produtoDao" class="br.com.flygonow.dao.impl.ProductDaoImp" />
+    <bean id="pedidoDao" class="br.com.flygonow.dao.impl.OrderDaoImp" />
 	<bean id="itensPedidoDao" class="br.com.flygonow.dao.impl.ItensPedidoDaoImp" />
-	<bean id="clienteDao" class="br.com.flygonow.dao.impl.ClienteDaoImp" />
+	<bean id="clienteDao" class="br.com.flygonow.dao.impl.ClientDaoImp" />
 	<bean id="adminDao" class="br.com.flygonow.dao.impl.AdminDaoImp" />	
 	<bean id="atendenteDao" class="br.com.flygonow.dao.impl.AtendenteDaoImp" />
 	<bean id="tabletDao" class="br.com.flygonow.dao.impl.TabletDaoImp" />
-	<bean id="moedaDao" class="br.com.flygonow.dao.impl.MoedaDaoImp" />
+	<bean id="moedaDao" class="br.com.flygonow.dao.impl.CoinDaoImp" />
 	<bean id="acompanhamentoDao" class="br.com.flygonow.dao.impl.AcompanhamentoDaoImp" />
 </beans>

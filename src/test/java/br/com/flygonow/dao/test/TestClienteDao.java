@@ -16,24 +16,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import br.com.flygonow.dao.ClienteDao;
-import br.com.flygonow.entities.Cliente;
+import br.com.flygonow.dao.ClientDao;
+import br.com.flygonow.entities.Client;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/resources/applicationContext.xml" })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestClienteDao {
 
-	private ClienteDao usuarioDao;
+	private ClientDao usuarioDao;
 	private Long id = 2L;
 
 	@Autowired
-	public void setUsuarioDao(ClienteDao usuarioDao) {
+	public void setUsuarioDao(ClientDao usuarioDao) {
 		this.usuarioDao = usuarioDao;
 	}
 
-	private Cliente getCliente() {
-		Cliente usuario = new Cliente();
+	private Client getCliente() {
+		Client usuario = new Client();
 		usuario.setNome("User");
 		usuario.setEmail("user@user.com");
 		usuario.setSenha("teste");
@@ -42,7 +42,7 @@ public class TestClienteDao {
 	
 	@Test()
 	public void testSalvar() {
-		Cliente usuario = null;
+		Client usuario = null;
 		usuario = usuarioDao.salvar(getCliente());
 		assertNotNull(usuario);
 		assertEquals(id, usuario.getId());
@@ -53,7 +53,7 @@ public class TestClienteDao {
 
 	/*@Test
 	public void testAtualizar() {
-        Cliente cliente = usuarioDao.pesquisarPorId(id);
+        Client cliente = usuarioDao.pesquisarPorId(id);
         cliente.setNome("User 2");
         cliente.setSenha("key_teste");
 
@@ -65,7 +65,7 @@ public class TestClienteDao {
 	
 	@Test
 	public void testTodos() {
-		List<Cliente> users = usuarioDao.todos();
+		List<Client> users = usuarioDao.todos();
 		assertNotNull(users);
 		assertEquals(6, users.size());	
 		assertEquals("User", users.get(0).getNome());
@@ -78,7 +78,7 @@ public class TestClienteDao {
 		params.put("id", id);  
 		List<Usuario> users = 
 				clienteDao.
-			listPesqParam("SELECT p FROM Cliente p WHERE p.id=:id", params);
+			listPesqParam("SELECT p FROM Client p WHERE p.id=:id", params);
 		assertNotNull(users);
 		assertEquals(1, users.size());	
 		assertEquals("User 2", users.get(0).getNome());

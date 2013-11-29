@@ -14,8 +14,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Cliente")
-public class Cliente extends Pessoa implements Serializable {
+@Table(name="Client")
+public class Client extends People implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -27,9 +27,9 @@ public class Cliente extends Pessoa implements Serializable {
 	private String email;
 
 	@OneToMany(mappedBy="cliente", fetch = LAZY)
-	private Set<Pedido> pedidos;
+	private Set<Order> pedidos;
 
-	public Cliente() {
+	public Client() {
 		super();
 	}
 
@@ -49,11 +49,11 @@ public class Cliente extends Pessoa implements Serializable {
 		this.email = email;
 	}
 
-	public Set<Pedido> getPedidos() {
+	public Set<Order> getPedidos() {
 		return this.pedidos;
 	}
 
-	public void setPedidos(Set<Pedido> pedidos) {
+	public void setPedidos(Set<Order> pedidos) {
 		this.pedidos = pedidos;
 	}
 

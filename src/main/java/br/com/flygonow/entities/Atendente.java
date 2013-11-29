@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Atendente")
-public class Atendente extends Pessoa implements Serializable{
+public class Atendente extends People implements Serializable{
 
 	private static final long serialVersionUID = 1;
 
@@ -25,7 +25,7 @@ public class Atendente extends Pessoa implements Serializable{
 	private Long id;
 	
 	@OneToMany(mappedBy = "atendente", fetch = LAZY)
-	private Set<Pedido> pedidos;
+	private Set<Order> pedidos;
 	
 	@OneToMany(mappedBy = "atendente", fetch = LAZY)
 	private Set<Tablet> tablets;
@@ -38,11 +38,11 @@ public class Atendente extends Pessoa implements Serializable{
 		this.id = id;
 	}
 	
-	public Set<Pedido> getPedidos() {
+	public Set<Order> getPedidos() {
 		return pedidos;
 	}
 
-	public void setPedidos(Set<Pedido> pedidos) {
+	public void setPedidos(Set<Order> pedidos) {
 		this.pedidos = pedidos;
 	}
 	

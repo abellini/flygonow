@@ -16,8 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import br.com.flygonow.dao.CategoriaDao;
-import br.com.flygonow.entities.Categoria;
+import br.com.flygonow.dao.CategoryDao;
+import br.com.flygonow.entities.Category;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,16 +25,16 @@ import br.com.flygonow.entities.Categoria;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCategoriaDao {
 
-    private CategoriaDao categoriaDao;
+    private CategoryDao categoriaDao;
     private Long id = 4L;
 	
     @Autowired
-    public void setCategoriaDao(CategoriaDao categoriaDao) {
+    public void setCategoriaDao(CategoryDao categoriaDao) {
         this.categoriaDao = categoriaDao;
     }
     
-    private Categoria getCategoria() {
-		Categoria categoria = new Categoria();
+    private Category getCategoria() {
+		Category categoria = new Category();
 		categoria.setCatNome("Teste");
 		return categoria;
 	}
@@ -43,7 +43,7 @@ public class TestCategoriaDao {
 	public void testSalvar() {
 		System.out.println(this.getClass().getClassLoader());
     	
-		Categoria categoria = null;
+		Category categoria = null;
 		categoria = categoriaDao.salvar(getCategoria());
 		assertNotNull(categoria);
 		assertEquals(id, categoria.getId());
@@ -53,7 +53,7 @@ public class TestCategoriaDao {
 	
 	@Test
 	public void testAtualizar() {
-        Categoria categoria = categoriaDao.pesquisarPorId(id);
+        Category categoria = categoriaDao.pesquisarPorId(id);
         categoria.setCatNome("Teste 2");
 
         categoria = categoriaDao.atualizar(categoria);
@@ -64,7 +64,7 @@ public class TestCategoriaDao {
 
 	@Test
 	public void testTodos() {
-		List<Categoria> categorias = categoriaDao.todos();
+		List<Category> categorias = categoriaDao.todos();
 		assertNotNull(categorias);
 		assertEquals(3, categorias.size());	
 		assertEquals("Teste", categorias.get(0).getCatNome());
@@ -75,9 +75,9 @@ public class TestCategoriaDao {
 	public void testListPesqParam() {
 		Map<String, Object> params = new HashMap<String,Object>();
 		params.put("id", id);  
-		List<Categoria> categorias = 
+		List<Category> categorias = 
 			categoriaDao.
-			listPesqParam("SELECT p FROM Categoria p WHERE p.id=:id", params);
+			listPesqParam("SELECT p FROM Category p WHERE p.id=:id", params);
 		assertNotNull(categorias);
 		assertEquals(1, categorias.size());	
 		assertEquals("Teste 2", categorias.get(0).getCatNome());
@@ -88,9 +88,9 @@ public class TestCategoriaDao {
 	public void testPesqParam() {
 		Map<String, Object> params = new HashMap<String,Object>();
 		params.put("id", id);  
-		Categoria categoria = 
+		Category categoria = 
 			categoriaDao.
-			pesqParam("SELECT p FROM Categoria p WHERE p.id=:id", params);
+			pesqParam("SELECT p FROM Category p WHERE p.id=:id", params);
 		assertNotNull(categoria);
 		assertEquals("Teste 2", categoria.getCatNome());
 		
@@ -98,7 +98,7 @@ public class TestCategoriaDao {
 	
 	@Test
 	public void testExcluir() {
-		Categoria categoria = categoriaDao.pesquisarPorId(id);
+		Category categoria = categoriaDao.pesquisarPorId(id);
 		categoriaDao.excluir(categoria);
 		assertNull(categoriaDao.pesquisarPorId(id));
 	}	

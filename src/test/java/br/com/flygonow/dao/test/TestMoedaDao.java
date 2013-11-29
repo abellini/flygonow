@@ -11,25 +11,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import br.com.flygonow.dao.MoedaDao;
-import br.com.flygonow.entities.Moeda;
+import br.com.flygonow.dao.CoinDao;
+import br.com.flygonow.entities.Coin;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/resources/applicationContext.xml" })
 @FixMethodOrder(MethodSorters.DEFAULT)
 public class TestMoedaDao {
 
-	private MoedaDao moedaDao;
+	private CoinDao moedaDao;
 	private Long id = 1L;
 	private Double valor = 0.0;
 	
 	@Autowired
-	public void setMoedaDao(MoedaDao moedaDao) {
+	public void setMoedaDao(CoinDao moedaDao) {
 		this.moedaDao = moedaDao;
 	}
 
-	private Moeda getMoeda(){
-		Moeda moeda = new Moeda();
+	private Coin getMoeda(){
+		Coin moeda = new Coin();
 		moeda.setName("Real");
 		moeda.setSimbol("R$");
 		moeda.setVl_conversao(0.0);
@@ -38,7 +38,7 @@ public class TestMoedaDao {
 	
 	@Test
 	public void testSalvar() {
-		Moeda moeda = null;
+		Coin moeda = null;
 		moeda = moedaDao.salvar(getMoeda());
 		assertNotNull(moeda);
 		assertEquals(id, moeda.getId());

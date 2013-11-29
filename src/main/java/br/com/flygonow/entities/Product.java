@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Produtos")
-public class Produto implements Serializable {
+public class Product implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -47,7 +47,7 @@ public class Produto implements Serializable {
 
 	@ManyToOne(fetch=LAZY)
 	@JoinColumn(name="cat_id", referencedColumnName = "id")
-	private Categoria cat;
+	private Category cat;
 
 	@OneToMany(mappedBy="produto", fetch = LAZY, cascade = ALL)
 	private Set<ItensPedido> itens;
@@ -55,7 +55,7 @@ public class Produto implements Serializable {
 	@OneToMany(mappedBy="produto", fetch = LAZY, cascade = ALL)
 	private Set<Acompanhamento> acompanhamentos;
 
-	public Produto() {
+	public Product() {
 		super();
 	}
 
@@ -115,11 +115,11 @@ public class Produto implements Serializable {
 		this.imagem = imagem;
 	}
 
-	public Categoria getCat() {
+	public Category getCat() {
 		return this.cat;
 	}
 
-	public void setCat(Categoria cat) {
+	public void setCat(Category cat) {
 		this.cat = cat;
 	}
 

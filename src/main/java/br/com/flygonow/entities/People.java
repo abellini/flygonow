@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class Pessoa {
+public class People {
 
 	@Column(name="nome")
 	private String nome;

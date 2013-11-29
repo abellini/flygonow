@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Pedidos")
-public class Pedido implements Serializable {
+public class Order implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -41,7 +41,7 @@ public class Pedido implements Serializable {
 	private Timestamp dataPed;
 
 	@ManyToOne
-	private Cliente cliente;
+	private Client cliente;
 	
 	@ManyToOne
 	private Atendente atendente;
@@ -60,7 +60,7 @@ public class Pedido implements Serializable {
 		this.atendente = atendente;
 	}
 
-	public Pedido() {
+	public Order() {
 		super();
 	}
 
@@ -104,11 +104,11 @@ public class Pedido implements Serializable {
 		this.dataPed = dataPed;
 	}
 
-	public Cliente getCliente() {
+	public Client getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Client cliente) {
 		this.cliente = cliente;
 	}
 

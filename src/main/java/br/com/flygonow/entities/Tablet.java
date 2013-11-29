@@ -36,13 +36,13 @@ public class Tablet implements Serializable {
 	private int number;
 	
 	@OneToMany(mappedBy = "tablet", fetch = LAZY)
-	private Set<Pedido> orders;
+	private Set<Order> orders;
 	
 	@ManyToOne
 	private Atendente attendant;
 	
 	@OneToOne
-	private Moeda coin;
+	private Coin coin;
 	
 	@OneToMany(mappedBy = "tablets", fetch = LAZY)
 	private Set<Advertisement> advertisements;
@@ -74,11 +74,11 @@ public class Tablet implements Serializable {
 		this.number = numero;
 	}
 
-	public Set<Pedido> getPedidos() {
+	public Set<Order> getPedidos() {
 		return orders;
 	}
 
-	public void setPedidos(Set<Pedido> pedidos) {
+	public void setPedidos(Set<Order> pedidos) {
 		this.orders = pedidos;
 	}
 
@@ -122,11 +122,11 @@ public class Tablet implements Serializable {
 		this.number = number;
 	}
 
-	public Set<Pedido> getOrders() {
+	public Set<Order> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(Set<Pedido> orders) {
+	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
 
@@ -138,11 +138,11 @@ public class Tablet implements Serializable {
 		this.attendant = attendant;
 	}
 
-	public Moeda getCoin() {
+	public Coin getCoin() {
 		return coin;
 	}
 
-	public void setCoin(Moeda coin) {
+	public void setCoin(Coin coin) {
 		this.coin = coin;
 	}
 

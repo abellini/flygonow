@@ -12,10 +12,10 @@ import org.junit.runners.MethodSorters;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import br.com.flygonow.dao.CategoriaDao;
-import br.com.flygonow.dao.ProdutoDao;
-import br.com.flygonow.entities.Categoria;
-import br.com.flygonow.entities.Produto;
+import br.com.flygonow.dao.CategoryDao;
+import br.com.flygonow.dao.ProductDao;
+import br.com.flygonow.entities.Category;
+import br.com.flygonow.entities.Product;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,26 +23,26 @@ import br.com.flygonow.entities.Produto;
 @FixMethodOrder(MethodSorters.DEFAULT)
 public class TestProdutoDao {
 
-    private ProdutoDao produtoDao;
+    private ProductDao produtoDao;
     private Long id = 2L;
 	
     @Resource
-    public void setProdutoDao(ProdutoDao produtoDao) {
+    public void setProdutoDao(ProductDao produtoDao) {
         this.produtoDao = produtoDao;
     }    
 
-    private CategoriaDao categoriaDao;
+    private CategoryDao categoriaDao;
 	
     @Resource
-    public void setCategoriaDao(CategoriaDao categoriaDao) {
+    public void setCategoriaDao(CategoryDao categoriaDao) {
         this.categoriaDao = categoriaDao;
     }
     
-    private Produto getProduto() {
-		Produto produto = new Produto();
-		Categoria categoria = categoriaDao.salvar(getCategoria());
+    private Product getProduto() {
+		Product produto = new Product();
+		Category categoria = categoriaDao.salvar(getCategoria());
 		
-		produto.setProdNome("Produto");
+		produto.setProdNome("Product");
 		produto.setPreco(15.5);
 		produto.setDesconto(5.0);
 		
@@ -51,15 +51,15 @@ public class TestProdutoDao {
 		return produto;
 	}
     
-	private Categoria getCategoria() {
-		Categoria categoria = new Categoria();
+	private Category getCategoria() {
+		Category categoria = new Category();
 		categoria.setCatNome("Prod");
 		return categoria;
 	}
     
 	@Test
 	public void testSalvar() {
-		Produto produto = null;
+		Product produto = null;
 		produto = produtoDao.salvar(getProduto());
 		assertNotNull(produto);
 		assertEquals(id, produto.getId());
@@ -69,8 +69,8 @@ public class TestProdutoDao {
 	/*
 	@Test
 	public void testAtualizar() {
-        Categoria cat = categoriaDao.pesquisarPorId(id);
-        Produto produto = produtoDao.pesquisarPorId(id);
+        Category cat = categoriaDao.pesquisarPorId(id);
+        Product produto = produtoDao.pesquisarPorId(id);
         produto.setCat(cat);
         produto.setProdNome("Teste 2");
         
@@ -81,7 +81,7 @@ public class TestProdutoDao {
 
 	@Test
 	public void testTodos() {
-		List<Produto> produtos = produtoDao.todos();
+		List<Product> produtos = produtoDao.todos();
 		assertNotNull(produtos);
 		assertEquals(1, produtos.size());	
 		assertEquals("Teste 2", produtos.get(0).getProdNome());
@@ -92,7 +92,7 @@ public class TestProdutoDao {
 	public void testListPesqParam() {
 		Map<String, Object> params = new HashMap<String,Object>();
 		params.put("id", id);  
-		List<Produto> produtos = produtoDao.listPesqParam("SELECT p FROM Produto p WHERE p.id=:id", params);
+		List<Product> produtos = produtoDao.listPesqParam("SELECT p FROM Product p WHERE p.id=:id", params);
 		assertNotNull(produtos);
 		assertEquals(1, produtos.size());	
 		assertEquals("Teste 2", produtos.get(0).getProdNome());
@@ -101,7 +101,7 @@ public class TestProdutoDao {
 
 	@Test
 	public void testExcluir() {
-		Produto produto = produtoDao.pesquisarPorId(id);
+		Product produto = produtoDao.pesquisarPorId(id);
 		produtoDao.excluir(produto);
 		assertNull(produtoDao.pesquisarPorId(id));
 	}
