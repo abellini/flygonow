@@ -8,8 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,15 +22,22 @@ import br.com.flygonow.entities.Categoria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/resources/applicationContext.xml"})
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCategoriaDao {
 
     private CategoriaDao categoriaDao;
-    private Integer id = 1;
+    private Long id = 4L;
 	
     @Autowired
     public void setCategoriaDao(CategoriaDao categoriaDao) {
         this.categoriaDao = categoriaDao;
     }
+    
+    private Categoria getCategoria() {
+		Categoria categoria = new Categoria();
+		categoria.setCatNome("Teste");
+		return categoria;
+	}
 
 	@Test
 	public void testSalvar() {
@@ -53,19 +62,12 @@ public class TestCategoriaDao {
 
 	}
 
-	private Categoria getCategoria() {
-		Categoria categoria = new Categoria();
-		categoria.setCatNome("Teste");
-		return categoria;
-	}
-
-
 	@Test
 	public void testTodos() {
 		List<Categoria> categorias = categoriaDao.todos();
 		assertNotNull(categorias);
-		assertEquals(1, categorias.size());	
-		assertEquals("Teste 2", categorias.get(0).getCatNome());
+		assertEquals(3, categorias.size());	
+		assertEquals("Teste", categorias.get(0).getCatNome());
 		
 	}
 	
@@ -81,7 +83,7 @@ public class TestCategoriaDao {
 		assertEquals("Teste 2", categorias.get(0).getCatNome());
 		
 	}
-	
+    
 	@Test
 	public void testPesqParam() {
 		Map<String, Object> params = new HashMap<String,Object>();
@@ -93,13 +95,11 @@ public class TestCategoriaDao {
 		assertEquals("Teste 2", categoria.getCatNome());
 		
 	}	
-
+	
 	@Test
 	public void testExcluir() {
 		Categoria categoria = categoriaDao.pesquisarPorId(id);
 		categoriaDao.excluir(categoria);
 		assertNull(categoriaDao.pesquisarPorId(id));
 	}	
-	
-	
 }

@@ -11,49 +11,25 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Admin")
-public class Admin implements Serializable {
+public class Admin extends Pessoa implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "admin_gen", sequenceName = "seq_Admin")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="admin_gen")
-	private Integer id;
-
-	private String usuario;
-
-	private String senha;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="admin_gen")	
+	@SequenceGenerator(name = "admin_gen", sequenceName = "seq_admin")
+	private Long id;
 	
-
 	public Admin() {
 		super();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-
-
-	public String getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-
-	public String getSenha() {
-		return this.senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
 
 }

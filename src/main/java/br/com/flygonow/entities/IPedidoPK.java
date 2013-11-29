@@ -11,33 +11,33 @@ public class IPedidoPK implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Column(name = "ped_id")  
-	private Integer pedId;
+	private Long pedId;
 	
 	@Column(name = "prod_id")  
-	private Integer prodId;
+	private Long prodId;
 
 
 	public IPedidoPK() {
 	}
 	
-	public IPedidoPK(Integer pedId, Integer prodId) {
+	public IPedidoPK(Long pedId, Long prodId) {
 		this.pedId = pedId;
 		this.prodId = prodId;
 	}
 
-	public Integer getPedId() {
+	public Long getPedId() {
 		return pedId;
 	}
 
-	public void setPedId(Integer pedId) {
+	public void setPedId(Long pedId) {
 		this.pedId = pedId;
 	}
 
-	public Integer getProdId() {
+	public Long getProdId() {
 		return prodId;
 	}
 
-	public void setProdId(Integer prodId) {
+	public void setProdId(Long prodId) {
 		this.prodId = prodId;
 	}
 

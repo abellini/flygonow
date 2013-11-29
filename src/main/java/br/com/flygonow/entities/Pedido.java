@@ -24,9 +24,9 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "pedido_gen", sequenceName = "seq_Pedido")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pedido_gen")
-	private Integer id;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="pedido_gen")	
+	@SequenceGenerator(name = "pedido_gen", sequenceName = "seq_pedido")
+	private Long id;
 
 	@Column(name="cc_numero")
 	private String ccNumero;
@@ -41,20 +41,34 @@ public class Pedido implements Serializable {
 	private Timestamp dataPed;
 
 	@ManyToOne
-	private Usuario usuario;
+	private Cliente cliente;
+	
+	@ManyToOne
+	private Atendente atendente;
+	
+	@ManyToOne
+	private Tablet tablet;
 
 	@OneToMany(mappedBy="pedido", fetch = LAZY)
 	private List<ItensPedido> itens =  new ArrayList<ItensPedido>();
+
+	public Atendente getAtendente() {
+		return atendente;
+	}
+
+	public void setAtendente(Atendente atendente) {
+		this.atendente = atendente;
+	}
 
 	public Pedido() {
 		super();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -90,12 +104,12 @@ public class Pedido implements Serializable {
 		this.dataPed = dataPed;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public List<ItensPedido> getItens() {
@@ -105,7 +119,13 @@ public class Pedido implements Serializable {
 	public void setItens(List<ItensPedido> itens) {
 		this.itens = itens;
 	}
+	
+	public Tablet getTablet() {
+		return tablet;
+	}
 
-
+	public void setTablet(Tablet tablet) {
+		this.tablet = tablet;
+	}
 
 }

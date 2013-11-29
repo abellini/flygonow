@@ -22,13 +22,13 @@
 			<property name="hibernate.connection.username"
 				value="postgres" />
 			<property name="hibernate.connection.password"
-				value="gv3sb4.p" />
+				value="245or8to" />
 
 			<!--Configuracoes de Debug-->
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="use_sql_comments" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			
 			<!-- Ehcache properties -->
 			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.EhCacheProvider"/>

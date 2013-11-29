@@ -24,26 +24,24 @@ public class ItensPedido implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="ped_id", referencedColumnName = "id", insertable=false, updatable=false)
-	private Pedido pedido; 
-	
+	private Pedido pedido;
 	
 	@ManyToOne
 	@JoinColumn(name="prod_id", referencedColumnName = "id", insertable=false, updatable=false)
 	private Produto produto;
-
+	
+	@Transient
+	private Double subTotal;
+	
 	public ItensPedido() {	}
 	
 	
-	public ItensPedido(Integer qtd, Double preco, Integer pedido, Integer produto) {
+	public ItensPedido(Integer qtd, Double preco, Long pedido, Long produto) {
 		this.id = new IPedidoPK(pedido, produto);
 		this.qtd = qtd;
 		this.preco = preco;
 	}
 	
-	@Transient
-	private Double subTotal;
-	
-
 	public Pedido getPedido() {
 		return pedido;
 	}

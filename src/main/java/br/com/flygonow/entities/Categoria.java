@@ -22,13 +22,19 @@ public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "categoria_gen", sequenceName = "seq_Categoria")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="categoria_gen")
-	private Integer id;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="categoria_gen")	
+	@SequenceGenerator(name = "categoria_gen", sequenceName = "seq_categoria")
+	private Long id;
 
 	@Column(name="cat_nome")
 	private String catNome;
 
+	@Column(name="imagem")
+	private byte[] imagem;
+	
+	@Column(name="descricao")
+	private String descricao;
+	
 	@OneToMany(mappedBy="cat", fetch = LAZY, cascade = ALL)    
 	private Set<Produto> produtos;
 
@@ -36,11 +42,11 @@ public class Categoria implements Serializable {
 		super();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -51,7 +57,15 @@ public class Categoria implements Serializable {
 	public void setCatNome(String catNome) {
 		this.catNome = catNome;
 	}
+	
+	public byte[] getImagem() {
+		return imagem;
+	}
 
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
+	}
+	
 	public Set<Produto> getProdutos() {
 		return this.produtos;
 	}

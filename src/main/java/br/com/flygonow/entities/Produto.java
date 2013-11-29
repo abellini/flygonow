@@ -18,33 +18,32 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 @Entity
 @Table(name="Produtos")
-//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)    
 public class Produto implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "produto_gen", sequenceName = "seq_Produto")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="produto_gen")
-	private Integer id;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="produto_gen")	
+	@SequenceGenerator(name = "produto_gen", sequenceName = "seq_produto")
 
+	private Long id;
+	
+	@Column(name="prod_nome")
+	private String prodNome;
+	
 	@Column(name="descricao")
 	@Lob
 	private String descricao;
-
-	@Column(name="prod_nome")
-	private String prodNome;
 
 	private Double preco;
 	
 	private Double desconto;
 
-	private String imagem;
+	private byte[] imagem;
+	
+	private byte[] video;
 
 	@ManyToOne(fetch=LAZY)
 	@JoinColumn(name="cat_id", referencedColumnName = "id")
@@ -53,16 +52,18 @@ public class Produto implements Serializable {
 	@OneToMany(mappedBy="produto", fetch = LAZY, cascade = ALL)
 	private Set<ItensPedido> itens;
 	
+	@OneToMany(mappedBy="produto", fetch = LAZY, cascade = ALL)
+	private Set<Acompanhamento> acompanhamentos;
 
 	public Produto() {
 		super();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -98,11 +99,19 @@ public class Produto implements Serializable {
 		return desconto;
 	}	
 	
-	public String getImagem() {
-		return this.imagem;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setImagem(String imagem) {
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public byte[] getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(byte[] imagem) {
 		this.imagem = imagem;
 	}
 
@@ -118,12 +127,23 @@ public class Produto implements Serializable {
 		return itens;
 	}
 
+	public byte[] getVideo() {
+		return video;
+	}
+
+	public void setVideo(byte[] video) {
+		this.video = video;
+	}
+
+	public Set<Acompanhamento> getAcompanhamentos() {
+		return acompanhamentos;
+	}
+
+	public void setAcompanhamentos(Set<Acompanhamento> acompanhamentos) {
+		this.acompanhamentos = acompanhamentos;
+	}
+
 	public void setItens(Set<ItensPedido> itens) {
 		this.itens = itens;
 	}
-
-
-
-
-
 }

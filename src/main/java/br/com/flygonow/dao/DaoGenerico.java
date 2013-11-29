@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-
 public interface DaoGenerico<T, ID extends Serializable> {
 	public Class<T> getObjectClass();
 	public T salvar(T object);

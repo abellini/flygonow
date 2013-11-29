@@ -28,6 +28,10 @@
 	<bean id="produtoDao" class="br.com.flygonow.dao.impl.ProdutoDaoImp" />
     <bean id="pedidoDao" class="br.com.flygonow.dao.impl.PedidoDaoImp" />
 	<bean id="itensPedidoDao" class="br.com.flygonow.dao.impl.ItensPedidoDaoImp" />
-	<bean id="usuarioDao" class="br.com.flygonow.dao.impl.UsuarioDaoImp" />
+	<bean id="clienteDao" class="br.com.flygonow.dao.impl.ClienteDaoImp" />
 	<bean id="adminDao" class="br.com.flygonow.dao.impl.AdminDaoImp" />	
+	<bean id="atendenteDao" class="br.com.flygonow.dao.impl.AtendenteDaoImp" />
+	<bean id="tabletDao" class="br.com.flygonow.dao.impl.TabletDaoImp" />
+	<bean id="moedaDao" class="br.com.flygonow.dao.impl.MoedaDaoImp" />
+	<bean id="acompanhamentoDao" class="br.com.flygonow.dao.impl.AcompanhamentoDaoImp" />
 </beans>

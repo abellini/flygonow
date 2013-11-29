@@ -26,13 +26,11 @@ public class DaoGenericoImp<T, ID extends Serializable> implements DaoGenerico<T
 		return this.oClass;
 	}
 
-
 	@SuppressWarnings("unchecked")
 	@PersistenceContext
 	public void setEntityManager(EntityManager em) {
 		this.entityManager = em;
 	}
-
 
 	protected EntityManager getEntityManager() {
 		if (entityManager == null)
@@ -43,7 +41,7 @@ public class DaoGenericoImp<T, ID extends Serializable> implements DaoGenerico<T
 	@SuppressWarnings("unchecked")
 	public DaoGenericoImp() {
 		this.oClass = (Class<T>)
-		( (ParameterizedType) getClass().getGenericSuperclass() ).getActualTypeArguments()[0];
+		((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 
 
