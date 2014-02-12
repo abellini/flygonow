@@ -33,6 +33,8 @@ public class Acompanhamento implements Serializable {
 
 	private Double preco;
 	
+	private Double valor;
+	
 	@ManyToOne
 	private Product produto;
 
@@ -66,6 +68,14 @@ public class Acompanhamento implements Serializable {
 
 	public void setPreco(Double preco) {
 		this.preco = preco;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 	
 }
